@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { MemberListComponent } from './_pages/member-list/member-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { MemberListComponent } from './_pages/member-list/member-list.component'
     FooterComponent,
     MemberListComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule,AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

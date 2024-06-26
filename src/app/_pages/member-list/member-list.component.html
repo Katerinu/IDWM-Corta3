@@ -2,12 +2,218 @@
   <div class="mx-auto max-w-screen-xl px-4">
     <button
       type="button"
-      class="text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+      class="clickBtn text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+      (click)="show = !show"
     >
       Agregar un integrante
     </button>
 
-    <div class="bg-white relative shadow-md overflow-x-auto">
+    <div class="justify-center flex" *ngIf="show">
+
+      <div
+        class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 justify-center"
+      >
+        <form class="space-y-6 justify-center" [formGroup]="forms" (ngSubmit)="onSubmit()">
+          <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+            Registra un integrante nuevo
+          </h5>
+
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Correo</label
+            >
+            <input
+              type="email"
+              formControlName="email"
+              name="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              placeholder="name@company.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              name="name"
+              formControlName="name"
+              id="name"
+              placeholder="John Doe"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <div>
+            <label
+              for="semester"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Semestre</label
+            >
+            <input
+              type="number"
+              name="semester"
+              formControlName="semester"
+              id="semester"
+              placeholder="1"
+              min="1"
+               max="12"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <div>
+            <label
+              for="career"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Carrera</label
+            >
+            <input
+              type="text"
+              name="career"
+              formControlName="career"
+              id="career"
+              placeholder="ICCI"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <button
+            type="submit"
+            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Crear usuario
+          </button>
+        </form>
+        <div class="justify-center flex mt-5">
+          <button
+          type="button"
+          class="clickBtn text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+          (click)="show = !show"
+        >
+          Volver
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <div class="justify-center flex" *ngIf="showEdit">
+
+      <div
+        class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 justify-center"
+      >
+        <form class="space-y-6 justify-center" [formGroup]="forms" (ngSubmit)="OnSubmitEdit()">
+          <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+            Editar un integrante
+          </h5>
+
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Correo</label
+            >
+            <input
+              type="email"
+              formControlName="email"
+              name="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              placeholder="name@company.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              name="name"
+              formControlName="name"
+              id="name"
+              placeholder="John Doe"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <div>
+            <label
+              for="semester"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Semestre</label
+            >
+            <input
+              type="number"
+              name="semester"
+              formControlName="semester"
+              id="semester"
+              placeholder="1"
+              min="1"
+               max="12"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <div>
+            <label
+              for="career"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Carrera</label
+            >
+            <input
+              type="text"
+              name="career"
+              formControlName="career"
+              id="career"
+              placeholder="ICCI"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+
+          </div>
+
+          <button
+            type="submit"
+            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Crear usuario
+          </button>
+        </form>
+        <div class="justify-center flex mt-5">
+          <button
+          type="button"
+          class="clickBtn text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+          (click)="showEdit = !showEdit"
+        >
+          Volver
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <div *ngIf="!show && !showEdit">
+    <div class="bg-white relative shadow-md overflow-x-auto mt-5">
       <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
@@ -39,7 +245,8 @@
             <td class="px-4 py-3">
               <button
                 type="button"
-                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                (click)="showEdit = !showEdit"
+                class="clickBtn py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
               >
                 Editar
               </button>
@@ -48,5 +255,6 @@
         </tbody>
       </table>
     </div>
+  </div>
   </div>
 </section>

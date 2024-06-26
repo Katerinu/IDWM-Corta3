@@ -19,6 +19,7 @@ export class MemberService {
    * @returns Observable<Member> - An observable of the created member
    */
   createMember(createMember: CreateMember): Observable<Member> {
+    console.log(createMember);
     return this.http.post<Member>(this.baseUrl + '/member', createMember);
   }
 
